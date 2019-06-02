@@ -1,0 +1,6 @@
+attr_name,attr_type,attr_len
+name,CHAR,12
+id,CHAR,8
+sex,CHAR,4
+id,PK,11
+age,INT,11

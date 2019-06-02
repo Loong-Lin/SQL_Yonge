@@ -1,0 +1,5 @@
+attr_name,attr_type,attr_len
+id,INT,11
+name,CHAR,10
+age,INT,11
+grade,INT,11

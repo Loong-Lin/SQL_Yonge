@@ -1,0 +1,8 @@
+attr_name,attr_type,attr_len
+name,CHAR,16
+course_name,CHAR,16
+cour_id,INT,11
+score,INT,11
+cour_id,PK,11
+name,PK,11
+id,CHAR,8

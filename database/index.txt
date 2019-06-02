@@ -1,0 +1,4 @@
+[stu]
+id
+[course_score]
+id
