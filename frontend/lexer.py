@@ -11,7 +11,7 @@ reversed = (
     'CREATE', 'TABLE', 'DROP', 'SHOW', 'ALTER', 'SELECT', 'FROM', 'WHERE',
     'INSERT', 'DELETE', 'UPDATE', 'VIEW', 'USER', 'REVOKE', 'GRANT',
     'INDEX', 'LOAD', 'SET', 'INTO', 'VALUES', 'TABLES', 'ADD', "ON", "TO",
-    'PASSWORD',
+    'PASSWORD', 'CREATETABLE', 'CREATEUSER', 'DROPTABLE', 'DROPINDEX', 'CREATEINDEX',
     # Modifier
     'PRIMARY', 'KEY', 'DESC', 'ASC', 'ALL',
     # Const Value

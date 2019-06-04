@@ -1,4 +1,5 @@
 [stu]
 id
+name
 [course_score]
 id

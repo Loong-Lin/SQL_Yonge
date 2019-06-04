@@ -46,6 +46,10 @@ class IndexDict:
         return table_name in self.index_dict.keys() and attr_name in self.index_dict[table_name].keys()
 
     def drop_index(self, table_name, attr_name):
+        if self.index_dict.get(table_name) is None:
+            return
+        elif self.index_dict[table_name].get(attr_name) is None:
+            return
         del self.index_dict[table_name][attr_name]
         if len(self.index_dict[table_name]) == 0:
             del self.index_dict[table_name]

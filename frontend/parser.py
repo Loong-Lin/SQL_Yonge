@@ -98,6 +98,12 @@ def p_power_type(p):
                     | INSERT
                     | DELETE
                     | PRINT
+                    | ALTER
+                    | CREATETABLE
+                    | CREATEUSER
+                    | DROPTABLE
+                    | DROPINDEX
+                    | CREATEINDEX
                     | ALL
                     | DESC
     """

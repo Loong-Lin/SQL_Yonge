@@ -6,10 +6,11 @@ from frontend.nodes import NodeType
 
 class UserDict:
     CurrentUser = "admin"
+    # create_table is not in power
     ALL_POWER = [NodeType.select, NodeType.update, NodeType.delete, NodeType.insert,
-                 NodeType.create_table, NodeType.grant_user, NodeType.create_user, NodeType.drop_table,
+                 NodeType.grant_user, NodeType.create_user, NodeType.drop_table,
                  NodeType.drop_index, NodeType.create_index, NodeType.alter, NodeType.print_table]
-    DEFAULT_POWER = [NodeType.select, NodeType.print_table]
+    DEFAULT_POWER = [NodeType.select, NodeType.print_table]  # 创建用户是给的默认权限
 
     def __init__(self, path=USER_PATH):
         self.password = {}  # username, password
@@ -28,7 +29,8 @@ class UserDict:
 
     def drop_table(self, table_name):
         for username, power_dict in self.power.items():
-            if username == "admin": continue
+            if username == "admin":
+                continue
             del self.power[username][table_name]
         self.write_back()
 
@@ -71,7 +73,7 @@ class UserDict:
             # print("self.power[user_name]: ", self.power[user_name])
             self.power[user_name][table_name] |= self.__get_mask(power_list)
         else:
-            # print("self.power[user_name][table_name]: ", self.power[user_name][table_name])
+            # 在对应用户和表名中加入权限
             self.power[user_name][table_name] = self.__get_mask(power_list)
             # print("self.power[user_name][table_name]: ", self.power[user_name][table_name])
 
@@ -103,13 +105,14 @@ class UserDict:
 
     def __get_mask(self, power_list):
         res = 0
-        # print("power_list: ", power_list)
-        # print("self.all_power: ", self.ALL_POWER)
         for power_type in power_list:
             # print("power_type; ", power_type)
             assert power_type in self.ALL_POWER
+            # 获得权限所在的位置
             pos = self.ALL_POWER.index(power_type)
             res |= 1 << pos
+        # print("__get_mask, res: ", res)
+        # 返回权限位置的数
         return res
 
     def load_data(self):

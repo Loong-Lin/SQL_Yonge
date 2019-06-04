@@ -21,7 +21,7 @@ create table stu2 (
  sex char(4),
  primary key(id));"""
 
-insert_test2 = "insert into stu values ('LJJ', '20164399', 'male');"
+insert_test2 = "insert into stu values ('LiuSi', '20164455', 'male', 22);"
 
 insert_test3 = 'insert into course_score values ("LJJ", "OS", 1002, 89);'
 
@@ -45,14 +45,14 @@ drop_table_test = "drop table mumu;"
 
 select_test = "select stu.name, course_score.score from stu, course_score where stu.id = course_score.id;"
 
-# select * from stu, course_score where stu.name = course_score.name;
+create_index = "create index stu(name);"
 
 create_user_test = "CREATE USER LJJ password '123';"
 
 grant_user_test = "grant insert, delete on stu to LJJ;"
 
-# grant insert, update on stu to Lin;
-
+# grant SELECT, UPDATE, DELETE, INSERT, CREATEUSER, DROPTABLE, DROPINDEX, CREATEINDEX, ALTER, PRINT on stu2 to Lin;
+# revoke SELECT, UPDATE, DELETE, INSERT, CREATEUSER, DROPTABLE, DROPINDEX, CREATEINDEX, ALTER, PRINT on stu2 from Lin;
 revoke_test = "revoke delete on stu from LJJ;"
 
 '''
@@ -80,6 +80,12 @@ def exec_sql(sql):
 
 
 # select * from stu where stu.id = "20164399";
+# select stu.name from stu where stu.id = '20164399';
+# select stu.name, teacher.name from stu, teacher, course_score where stu.name =
+# course_score.name and teacher.cour_name = course_score.course_name;
 
-# select * from stu, teacher, course_score where stu.name = course_score.name and teacher.name = course_score.name;
 # select * from stu, teacher where stu.name = "LJJ" and teacher.name = "JinHu"
+# select stu.name, course_score.score from stu, course_score where stu.id = course_score.id;
+
+# select stu.name, teacher.name from stu, teacher, course_score where stu.name =
+# course_score.name and teacher.cour_name = course_score.course_name or stu.name="LJJ";

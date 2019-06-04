@@ -22,8 +22,8 @@ VISIBLE = False
 
 # 创建表
 def execute_create_table(node):
-    if not __check_power(node.type, [node.table_name]):
-        return
+    # if not __check_power(node.type, [node.table_name]):
+    #     return
     # 如果该表已经存在，则返回None
     if __check_table([node.table_name]):
         print("Error: This table already exists.")
@@ -189,8 +189,8 @@ def execute_select(node):
     print("\n" + "node.from_list: ") if VISIBLE is True else None
     for it in node.from_list:
         print(it, end=", ") if VISIBLE is True else None
-    print("\n" + "node.where_list: ")  # if VISIBLE is True else None
-    print(node.where_list)  # if VISIBLE is True else None
+    print("\n" + "node.where_list: ") if VISIBLE is True else None
+    print(node.where_list) if VISIBLE is True else None
     part_name = []  # 只存属性名
     full_name = []  # 表名和属性名都存，格式: [table_name.attr_name1, table_name.attr_name2,...]
     # table_data = []
